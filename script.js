@@ -61,20 +61,21 @@ class LinkedList {
         let current = this.head;
 
         if (current === null) {
-            return 'Nothing to delete';
+            return null;
         }
 
         if (current.nextNode === null) {
+            let val = current.value;
             this.head = null;
+            return val;
         }
 
         while (current.nextNode.nextNode !== null) {
             current = current.nextNode;
+            let value = current.nextNode.value;
+            current.nextNode = null;
+            return value;
         }
-
-        let value = current.nextNode.value;
-        current.nextNode = null;
-        return value;
     }
 
     contains(num) {
@@ -92,8 +93,8 @@ class LinkedList {
         let current = this.head;
         let count = 0;
 
-        if (current === null || index < 0) {
-            return 'Oh no no';
+        if (index < 0) {
+            return null;
         }
         else {
             while (current !== null) {
